@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Song500 - Sing & Learn Languages</title>
+    <meta
+      name="description"
+      content="Learn a new language with ease! Our app offers a fun and engaging way to master a foreign language. Try it now and start your language learning journey today!"
+    />
+
+    <link
+      href="https://fonts.cdnfonts.com/css/alien-encounters"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/f47029176b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <nav class="container">
+      <div class="logo">
+        <!-- <a href="#"><img src="logo.png" alt="Logo" /></a> -->
+        <i class="fa-solid fa-bullhorn" style="color: #0067f3; font-size: 30px">
+        </i>
+        <span class="brand-name">&nbsp;Song500</span>
+      </div>
+      <div class="menu">
+        <ul>
+          <li>
+            <a href="#how-it-works"
+              ><i class="fa-solid fa-circle-info"></i>
+              <span class="menu-item">How it works</span></a
+            >
+          </li>
+          <li>
+            <a href="#lyrics-section-id"
+              ><i class="fa-solid fa-microphone-lines"></i>
+              <span class="menu-item">Lyrics Checker</span></a
+            >
+          </li>
+          <!-- <li>
+            <a href="#"
+              ><i class="fa-solid fa-arrow-right-to-bracket"></i>
+              <span class="menu-item">Login</span></a
+            >
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+
+    <div class="jumbotron-section container">
+      <div class="jumbotron-top">
+        <div class="title-logo">
+          <i
+            class="fa-solid fa-bullhorn"
+            style="color: white; font-size: 200px"
+          ></i>
+          <div>
+            <div class="jumbotron-brand-name">SONG</div>
+            <div class="jumbotron-brand-name">500</div>
+          </div>
+        </div>
+        <div class="tag-line">
+          <h2>Learn a second language by learning songs</h2>
+          <a class="button" href="#how-it-works">How it works</a>
+        </div>
+      </div>
+
+      <div class="jumbotron-bottom">
+        <h1 class="header">Music Aids Memory</h1>
+        <p>
+          Learn by singing and gain knowledge of the top 500 words of a
+          language.
+        </p>
+        <p>It's a fun way to build vocabulary and gain confidence.</p>
+      </div>
+    </div>
+
+    <div id="how-it-works" class="main-section container">
+      <h1>How it works</h1>
+      <div class="steps-box">
+        <div class="steps">
+          <div class="step">
+            <div class="step-col1">
+              <span class="step-number">Step 1:</span>
+              <i class="fa-solid fa-music"></i>
+            </div>
+
+            <div class="step-col2">
+              <span class="step-label"> Choose Song </span>
+              <p class="description">
+                Select an artist and song that you would like to learn.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-col1">
+              <span class="step-number">Step 2:</span>
+              <i class="fa-solid fa-language"></i>
+            </div>
+            <div class="step-col2">
+              <span class="step-label"> Word Translator </span>
+              <p class="description">
+                Select your native language for the in-app dictionary.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-col1">
+              <span class="step-number">Step 3:</span>
+              <i class="fa-solid fa-microphone-lines"></i>
+            </div>
+            <div class="step-col2">
+              <span class="step-label"> Lyrics </span>
+              <p class="description">
+                Select an artist and song that you would like to learn.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-col1">
+              <span class="step-number">Step 4:</span>
+              <i class="fa-solid fa-list-ol"></i>
+            </div>
+            <div class="step-col2">
+              <span class="step-label"> Top 500 Words List </span>
+              <p class="description">
+                Song500 will mark off the words you have covered in your song
+                list.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-col1">
+              <span class="step-number">Step 5:</span>
+              <i class="fa-solid fa-list-check"></i>
+            </div>
+            <div class="step-col2">
+              <span class="step-label"> Still to Learn List </span>
+              <p class="description">
+                Mark words you know to identify what you still need to learn.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-col1">
+              <span class="step-number">Step 6:</span>
+              <i class="fa-solid fa-calendar-day"></i>
+            </div>
+            <div class="step-col2">
+              <span class="step-label"> Two Words of the Day </span>
+              <p class="description">
+                Receive an email each day with 2 words from your Still To Learn
+                List.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="lyrics-section-id" class="lyrics-section container">
+      <h1>Lyrics Word Checker</h1>
+
+      <div class="lyricsTabs">
+        <button
+          id="btn-choose-song"
+          class="buttonTabs"
+          onclick="openTab(event, 'chooseSong')"
+        >
+          Choose Song
+        </button>
+        <button
+          id="btn-enter-lyrics"
+          class="buttonTabs"
+          onclick="openTab(event, 'submitLyrics')"
+        >
+          Enter Lyrics
+        </button>
+
+        <div id="chooseSong" class="tabcontent" style="display: block">
+          <p>Choose Song</p>
+          <br />
+          <select id="songList"></select>
+          <button id="select-btn" onclick="selectSong()">Select</button>
+        </div>
+
+        <div id="submitLyrics" class="tabcontent">
+          <p>Enter Lyrics</p>
+          <br />
+          <!-- <h3>Submit Lyrics</h3> -->
+          <!-- <form>
+            <label for="lyrics">Lyrics:</label>
+            <textarea id="lyrics" name="lyrics"></textarea>
+            <br>
+            <button type="submit">Submit</button>
+          </form> -->
+          <form>
+            <!-- <label for="text-input">Enter song lyrics:</label> -->
+            <textarea
+              id="text-input"
+              class="expandable"
+              name="text-input"
+              rows="10"
+            ></textarea>
+
+            <div id="buttons">
+              <button
+                id="submit-btn"
+                class="button"
+                type="button"
+                onclick="compareWords()"
+              >
+                Submit
+              </button>
+              <button
+                id="reset-btn"
+                class="button hidden"
+                type="button"
+                onclick="lyricsResetButton()"
+              >
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="result" class="result"></div>
+    </div>
+
+    <div id="cookie-consent">
+      <p>
+        We use cookies to improve your browsing experience on our website. By
+        continuing to use our site, you consent to our use of cookies.
+        <a style="color: yellow" href="privacy.html"> See Privacy Statement</a>
+      </p>
+      <button id="accept-cookies" onclick="hideCookieConsent()">
+        I Accept
+      </button>
+    </div>
+
+    <footer>
+      <div>
+        <p>
+          &copy; Mont Classix 2023 | <a href="privacy.html">Privacy Policy</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        var xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              var data = JSON.parse(xhr.responseText)
+              populateSongList(data)
+            } else {
+              console.log('Error loading song data')
+            }
+          }
+        }
+        xhr.open('GET', 'song-data.json')
+        xhr.send()
+      }
+
+      function populateSongList(data) {
+        var songList = document.getElementById('songList')
+        for (var i = 0; i < data.length; i++) {
+          var option = document.createElement('option')
+          option.value = i
+          option.text = data[i].artist + ' - ' + data[i].song
+          option.lyrics = data[i].lyrics
+          songList.appendChild(option)
+        }
+      }
+
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks
+        tabcontent = document.getElementsByClassName('tabcontent')
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = 'none'
+        }
+        tablinks = document.getElementsByClassName('buttonTabs')
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(' active', '')
+        }
+        document.getElementById(tabName).style.display = 'block'
+        evt.currentTarget.className += ' active'
+      }
+
+      // Load wordlist from top500words.json
+
+      function compareWords(selectedSongLyrics) {
+        fetch('top500words.json')
+          .then((response) => response.json())
+          .then((data) => {
+            var { top500words } = data
+
+            // Enter Custom Lyrics
+            var input = document.getElementById('text-input')
+            var submitBtn = document.getElementById('submit-btn')
+            var resetBtn = document.getElementById('reset-btn')
+            var lyricsSection = document.getElementById('lyrics-section-id')
+
+
+            submitBtn.addEventListener('click', function () {
+              const inputDisplay = displayText(input)
+              hideInputAndButton(inputDisplay, submitBtn)
+              highlightWords(inputDisplay.value, top500words)
+              showResetButton(resetBtn)
+
+              // window.location.href = lyricsSection;
+              window.location.href = '#lyrics-section-id'
+            })
+
+            // var resetBtn = createResetButton(input, submitBtn)
+
+            // document.getElementById('buttons').appendChild(resetBtn)
+          })
+          .catch((error) => console.error(error))
+      }
+
+      function selectSong() {
+        
+        fetch('top500words.json')
+        .then((response) => response.json())
+        .then((data) => {
+          var { top500words } = data
+          
+          var songList = document.getElementById('songList')
+          var selectedSongIndex = songList.selectedIndex      
+          var selectedSongLyrics = songList.options[selectedSongIndex].lyrics
+            // Select Song Lyrics
+            // var inputLyrics = selectedSongLyrics
+            var selectBtn = document.getElementById('select-btn')
+
+            selectBtn.addEventListener('click', function () {
+              let input = {}
+              input.value = selectedSongLyrics
+              let inputDisplay = displayText(input)
+              highlightWords(inputDisplay.value, top500words)
+
+              window.location.href = '#lyrics-section-id'
+            })
+
+          })
+          .catch((error) => console.error(error))
+      }
+
+      function hideInputAndButton(input, submitBtn) {
+        input.classList.add('hidden')
+        submitBtn.classList.add('hidden')
+      }
+
+      function showResetButton(resetBtn) {
+        resetBtn.classList.remove('hidden')
+      }
+
+      function highlightWords(inputValue, top500words) {
+        var words = inputValue.match(/\b\w+\b|[^\s]/g)
+        var newlines = inputValue.match(/<br\s*[\/]?>/gi)
+        var result = ''
+        var currentWord = ''
+        var currentNewline = 0
+
+        for (var i = 0; i < inputValue.length; i++) {
+          var char = inputValue.charAt(i)
+          if (/\s|\p{P}/u.test(char) || char === '\n') {
+            if (currentWord !== '') {
+              var highlightedWord = getHighlightedWord(currentWord, top500words)
+              result += highlightedWord + char
+              currentWord = ''
+            } else {
+              result += char
+            }
+            if (char === '\n' && newlines && currentNewline < newlines.length) {
+              result += newlines[currentNewline]
+              currentNewline++
+            }
+          } else {
+            currentWord += char
+          }
+        }
+
+        if (currentWord !== '') {
+          var highlightedWord = getHighlightedWord(currentWord, top500words)
+          result += highlightedWord
+        }
+
+        document.getElementById('result').innerHTML = '<br><br> ' + result
+        // displayText();
+      }
+
+      function displayText(input) {
+        // var textareaValue = document.getElementById('text-input').value
+        // var outputDiv = document.getElementById('result')
+        // outputDiv.innerHTML = textareaValue.replace(/\n/g, "<br>");
+        var displayInput = input
+        // console.log("displayInput: ", displayInput);
+        displayInput.value = displayInput.value.replace(/\n/g, '<br>')
+        return displayInput
+      }
+
+      function getHighlightedWord(word, top500words) {
+        var lowercaseWord = word.toLowerCase()
+        var singularWord = lowercaseWord.endsWith('ies')
+          ? lowercaseWord.slice(0, -3) + 'y'
+          : lowercaseWord
+        var singularWordNoS = singularWord.endsWith('s')
+          ? singularWord.slice(0, -1)
+          : singularWord
+        var matched = top500words.find(function (w) {
+          return w === singularWordNoS || w === lowercaseWord
+        })
+        if (matched) {
+          return "<span class='highlight'>&nbsp;" + word + '&nbsp;</span>'
+        } else {
+          return word
+        }
+      }
+
+      function lyricsResetButton() {
+        var input = document.getElementById('text-input')
+        var submitBtn = document.getElementById('submit-btn')
+        var resetBtn = document.getElementById('reset-btn')
+
+        resetBtn.addEventListener('click', function () {
+          input.value = ''
+          input.classList.remove('hidden')
+          submitBtn.classList.remove('hidden')
+          resetBtn.classList.add('hidden')
+
+          document.getElementById('result').innerHTML = ''
+          // resetBtn.remove()
+        })
+      }
+
+      function createResetButton(input, submitBtn) {
+        var resetBtn = document.createElement('button')
+        resetBtn.innerText = 'Reset'
+        resetBtn.addEventListener('click', function () {
+          input.value = ''
+          input.classList.remove('hidden')
+          submitBtn.classList.remove('hidden')
+          document.getElementById('result').innerHTML = ''
+          resetBtn.remove()
+        })
+
+        return resetBtn
+      }
+
+      function setCookie(name, value, days) {
+        const date = new Date()
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+        const expires = 'expires=' + date.toUTCString()
+        document.cookie = name + '=' + value + ';' + expires + ';path=/'
+      }
+
+      function hideCookieConsent() {
+        const cookieConsent = document.getElementById('cookie-consent')
+        cookieConsent.style.display = 'none'
+        setCookie('cookies-consent', 'accepted', 365) // set a cookie for 1 year
+      }
+    </script>
+  </body>
+</html>
