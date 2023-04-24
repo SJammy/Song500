@@ -260,6 +260,7 @@
     </footer>
 
     <script>
+      // Load song data from song-data.json and populate song list
       window.onload = function () {
         var xhr = new XMLHttpRequest()
         xhr.onreadystatechange = function () {
@@ -276,6 +277,7 @@
         xhr.send()
       }
 
+      // Populate the song list with the song data
       function populateSongList(data) {
         var songList = document.getElementById('songList')
         for (var i = 0; i < data.length; i++) {
@@ -287,6 +289,7 @@
         }
       }
 
+      // Open a tab and display the content
       function openTab(evt, tabName) {
         var i, tabcontent, tablinks
         tabcontent = document.getElementsByClassName('tabcontent')
@@ -301,8 +304,8 @@
         evt.currentTarget.className += ' active'
       }
 
-      // Load wordlist from top500words.json
-
+      // Load the top 500 words list from top500words.json
+      // and compare with the inputted song lyrics
       function compareWords(selectedSongLyrics) {
         fetch('top500words.json')
           .then((response) => response.json())
@@ -315,36 +318,32 @@
             var resetBtn = document.getElementById('reset-btn')
             var lyricsSection = document.getElementById('lyrics-section-id')
 
-
+            // When the submit button is clicked, hide the input and submit button,
+            // highlight the top 500 words, and display the reset button
             submitBtn.addEventListener('click', function () {
               const inputDisplay = displayText(input)
               hideInputAndButton(inputDisplay, submitBtn)
               highlightWords(inputDisplay.value, top500words)
               showResetButton(resetBtn)
 
-              // window.location.href = lyricsSection;
               window.location.href = '#lyrics-section-id'
             })
-
-            // var resetBtn = createResetButton(input, submitBtn)
-
-            // document.getElementById('buttons').appendChild(resetBtn)
           })
           .catch((error) => console.error(error))
       }
 
+      // Select a song from the song list and compare with the top 500 words
       function selectSong() {
-        
         fetch('top500words.json')
-        .then((response) => response.json())
-        .then((data) => {
-          var { top500words } = data
-          
-          var songList = document.getElementById('songList')
-          var selectedSongIndex = songList.selectedIndex      
-          var selectedSongLyrics = songList.options[selectedSongIndex].lyrics
+          .then((response) => response.json())
+          .then((data) => {
+            var { top500words } = data
+
+            // Get the selected song lyrics from the song list
+            var songList = document.getElementById('songList')
+            var selectedSongIndex = songList.selectedIndex
+            var selectedSongLyrics = songList.options[selectedSongIndex].lyrics
             // Select Song Lyrics
-            // var inputLyrics = selectedSongLyrics
             var selectBtn = document.getElementById('select-btn')
 
             selectBtn.addEventListener('click', function () {
@@ -355,65 +354,76 @@
 
               window.location.href = '#lyrics-section-id'
             })
-
           })
           .catch((error) => console.error(error))
       }
 
+      // Hide the input field and submit button
       function hideInputAndButton(input, submitBtn) {
         input.classList.add('hidden')
         submitBtn.classList.add('hidden')
       }
 
+      // Display reset button
       function showResetButton(resetBtn) {
         resetBtn.classList.remove('hidden')
       }
 
+      // Highlights the top 500 words in the input value.
       function highlightWords(inputValue, top500words) {
+        // Split the input value into words and newlines.
         var words = inputValue.match(/\b\w+\b|[^\s]/g)
         var newlines = inputValue.match(/<br\s*[\/]?>/gi)
         var result = ''
         var currentWord = ''
         var currentNewline = 0
 
+        // Loop through each character in the input value.
         for (var i = 0; i < inputValue.length; i++) {
           var char = inputValue.charAt(i)
           if (/\s|\p{P}/u.test(char) || char === '\n') {
+            // If the character is a space, punctuation, or newline,
+            // check if there is a current word to highlight.
             if (currentWord !== '') {
+              // Get the highlighted word and add it to the result strin
               var highlightedWord = getHighlightedWord(currentWord, top500words)
               result += highlightedWord + char
               currentWord = ''
             } else {
               result += char
             }
+            // If the character is a newline, add the corresponding
+            // HTML tag for newlines in the result string.
             if (char === '\n' && newlines && currentNewline < newlines.length) {
               result += newlines[currentNewline]
               currentNewline++
             }
           } else {
+            // If the character is not a space or punctuation,
+            // add it to the current word.
             currentWord += char
           }
         }
 
+        // If there is a current word to highlight, add it to the result string.
         if (currentWord !== '') {
           var highlightedWord = getHighlightedWord(currentWord, top500words)
           result += highlightedWord
         }
 
+        // Set the result as the innerHTML of the 'result' element.
         document.getElementById('result').innerHTML = '<br><br> ' + result
-        // displayText();
       }
 
+      // This function replaces newlines with HTML line break tags in the input value.
       function displayText(input) {
-        // var textareaValue = document.getElementById('text-input').value
-        // var outputDiv = document.getElementById('result')
-        // outputDiv.innerHTML = textareaValue.replace(/\n/g, "<br>");
         var displayInput = input
-        // console.log("displayInput: ", displayInput);
         displayInput.value = displayInput.value.replace(/\n/g, '<br>')
         return displayInput
       }
 
+      // checks if the given word is one of the top 500 words,
+      // and returns the word wrapped in an HTML span element with the class 'highlight'.
       function getHighlightedWord(word, top500words) {
         var lowercaseWord = word.toLowerCase()
         var singularWord = lowercaseWord.endsWith('ies')
@@ -432,6 +442,8 @@
         }
       }
 
+      // When the reset button is clicked, show the input and submit button,
+      // hide the reset button, and clear the highlighted words
       function lyricsResetButton() {
         var input = document.getElementById('text-input')
         var submitBtn = document.getElementById('submit-btn')
@@ -444,24 +456,10 @@
           resetBtn.classList.add('hidden')
 
           document.getElementById('result').innerHTML = ''
-          // resetBtn.remove()
         })
       }
 
-      function createResetButton(input, submitBtn) {
-        var resetBtn = document.createElement('button')
-        resetBtn.innerText = 'Reset'
-        resetBtn.addEventListener('click', function () {
-          input.value = ''
-          input.classList.remove('hidden')
-          submitBtn.classList.remove('hidden')
-          document.getElementById('result').innerHTML = ''
-          resetBtn.remove()
-        })
-
-        return resetBtn
-      }
-
+      // set a cookie with a given name, value, and expiration time in days.
       function setCookie(name, value, days) {
         const date = new Date()
         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
@@ -469,6 +467,7 @@
         document.cookie = name + '=' + value + ';' + expires + ';path=/'
       }
 
+      // A function to hide the cookie consent popup and set a cookie to remember the user's consent for 1 year.
       function hideCookieConsent() {
         const cookieConsent = document.getElementById('cookie-consent')
         cookieConsent.style.display = 'none'
